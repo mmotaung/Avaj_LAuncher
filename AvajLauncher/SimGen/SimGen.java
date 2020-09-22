@@ -11,6 +11,7 @@ public class SimGen {
 		try {
             File simulation = new File("simulation.txt");
             if (simulation.createNewFile()) {
+				System.out.println("File created: " + simulation.getName());
             } else {
 				FileWriter fwriter = new FileWriter("simulation.txt");
             	PrintWriter pwriter = new PrintWriter(fwriter);
