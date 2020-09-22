@@ -6,12 +6,12 @@ import java.io.PrintWriter;
 public class Messenger {
    public void messenger(String message){
         try {
-            FileWriter fw = new FileWriter("simulation.txt", true);
-            PrintWriter pw = new PrintWriter(fw);
-            pw.println(message);
-           pw.close();
+            FileWriter fwriter = new FileWriter("simulation.txt", true);
+            PrintWriter pwriter = new PrintWriter(fwriter);
+            pwriter.println(message);
+           pwriter.close();
           } catch (Exception e) {
-            System.out.println("Could not write to file.");
+            System.out.println("Failed to write to file.");
           }
     }
 }
