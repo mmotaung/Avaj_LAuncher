@@ -13,7 +13,11 @@ public class SimGen {
             if (simulation.createNewFile()) {
 				System.out.println("File created: " + simulation.getName());
             } else {
-				System.out.println("File already exists.");
+				FileWriter fwriter = new FileWriter("simulation.txt");
+            	PrintWriter pwriter = new PrintWriter(fwriter);
+				pwriter.print("");										
+				pwriter.close();
+				System.out.println("Empty File recreated.");
             }
           } catch (Exception e) {
             System.out.println("File could not be created.");
@@ -66,6 +70,7 @@ public class SimGen {
 						flyables.add(flyable);
 
 					}
+					
 					for (Flyable aircraft : flyables) {
 						aircraft.registerTower(tower);
 					}
