@@ -37,7 +37,7 @@ public class SimGen {
 					SimNumber = Integer.parseInt(line.split(" ")[0]);
 
 					if (SimNumber < 0) {
-						System.out.println("No of simulations cannot be negative");
+						System.out.println("Number of simulations cannot be negative");
 						System.exit(1);
 					}
 
@@ -69,9 +69,11 @@ public class SimGen {
 					for (Flyable aircraft : flyables) {
 						aircraft.registerTower(tower);
 					}
-
-					for (int i = 1; i <= SimNumber; i++) {
+					int	i = 1;
+					while(i <= SimNumber)
+					{
 						tower.changeWeather();
+						i++;
 					}
 
 					System.out.println("Simulation ran " + SimNumber + " times");
