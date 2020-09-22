@@ -12,13 +12,13 @@ public class SimGen {
             File simulation = new File("simulation.txt");
             if (simulation.createNewFile()) {
             } else {
-				FileWriter fw = new FileWriter("simulation.txt");
-            	PrintWriter pw = new PrintWriter(fw);
-				pw.print("");
-				pw.close();
+				FileWriter fwriter = new FileWriter("simulation.txt");
+            	PrintWriter pwriter = new PrintWriter(fwriter);
+				pwriter.print("");
+				pwriter.close();
             }
           } catch (Exception e) {
-            System.out.println("Could not create file.");
+            System.out.println("File could not be created.");
           }
 
 		try {
@@ -27,19 +27,19 @@ public class SimGen {
 				System.exit(1);
 			} else {
 
-				BufferedReader br = null;
-				br = new BufferedReader(new FileReader(args[0]));
+				BufferedReader reader = null;
+				reader = new BufferedReader(new FileReader(args[0]));
 
 				String line;
 
-				int numOfSimulations = 0;
+				int SimNumber = 0;
 
 				try {
-					line = br.readLine();
-					numOfSimulations = Integer.parseInt(line.split(" ")[0]);
+					line = reader.readLine();
+					SimNumber = Integer.parseInt(line.split(" ")[0]);
 
-					if (numOfSimulations < 0) {
-						System.out.println("Invalid scenario file, no of simulations cannot be a negative number");// check for negitives
+					if (SimNumber < 0) {
+						System.out.println("No of simulations cannot be negative");
 						System.exit(1);
 					}
 
@@ -53,12 +53,12 @@ public class SimGen {
 					WeatherTower tower = new WeatherTower();
 					ArrayList<Flyable> flyables = new ArrayList<>();
 
-					while ((line = br.readLine()) != null) {
+					while ((line = reader.readLine()) != null) {
 						line = line.trim();
 						line = line.replaceAll("\\s+", " ");
 						String[] values = line.split(" ");
 						if (values.length != 5) {
-							System.out.println("Fields missing in scenario file");
+							System.out.println("Missing Fields in scenario file");
 							System.exit(1);
 						}
 
@@ -72,17 +72,17 @@ public class SimGen {
 						aircraft.registerTower(tower);
 					}
 
-					for (int i = 1; i <= numOfSimulations; i++) {
+					for (int i = 1; i <= SimNumber; i++) {
 						tower.changeWeather();
 					}
 
-					System.out.println("Simulation ran " + numOfSimulations + " times");
+					System.out.println("Simulation ran " + SimNumber + " times");
 
 				} catch (Exception e) {
-					System.out.println("error occured");
+					System.out.println("Encountered an error");
 					System.exit(1);
 				}
-				br.close();
+				reader.close();
 			}
 		} catch (Exception e) {
 			System.out.println("Couldn't read from file");
