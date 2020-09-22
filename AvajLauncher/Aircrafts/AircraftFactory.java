@@ -20,7 +20,7 @@ public abstract class AircraftFactory {
         }else if (type.equals("Baloon")){
             flyable = new Baloon(name, coordinates);
         }else{
-            System.out.println("Aircraft not recognised " + type);
+            System.out.println("Unknown Aircraft" + type);
         }
         return(flyable);
     }
