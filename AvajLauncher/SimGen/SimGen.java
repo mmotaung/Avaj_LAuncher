@@ -13,10 +13,7 @@ public class SimGen {
             if (simulation.createNewFile()) {
 				System.out.println("File created: " + simulation.getName());
             } else {
-				FileWriter fwriter = new FileWriter("simulation.txt");
-            	PrintWriter pwriter = new PrintWriter(fwriter);
-				pwriter.print("");
-				pwriter.close();
+				System.out.println("File already exists.");
             }
           } catch (Exception e) {
             System.out.println("File could not be created.");
