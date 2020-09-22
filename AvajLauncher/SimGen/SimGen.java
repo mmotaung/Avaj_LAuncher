@@ -90,7 +90,7 @@ public class SimGen {
 				reader.close();
 			}
 		} catch (Exception e) {
-			System.out.println("Couldn't read from file");
+			System.out.println("Failed to read from file.");
 			System.exit(1);
 		}
 
