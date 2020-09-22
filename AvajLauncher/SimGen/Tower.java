@@ -12,7 +12,7 @@ public abstract class Tower {
         } catch (Exception e) {
             System.out.println("failed to register flyable");
         }
-    }
+        }
 
     public void unregister(Flyable flyable){
         try {
@@ -20,15 +20,15 @@ public abstract class Tower {
         } catch (Exception e) {
             System.out.println("failed to unregister");
         }
-  
     }
-
     protected void conditionsChanged(){
         try {
-            for(int i = 0; i < observers.size(); i++)
+            int i = 0;
+            while ( i < observers.size())
             {
                 observers.get(i).updateConditions();
-            } 
+                i++;
+            }
         } catch (Exception e) {
             System.out.println("Couldn't update conditions");        }
     }
